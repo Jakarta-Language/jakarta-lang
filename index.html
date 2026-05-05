@@ -1,75 +1,442 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jakarta Language Playground</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="../images/jakarta-icon.svg" type="image/svg+xml">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./jakarta-icon.svg" type="image/svg+xml">
+    <title>Jakarta Language — Programming Bahasa Indonesia</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="app">
-    <header class="header">
-      <div class="header-left">
-        <img src="../images/jakarta-icon.svg" alt="Jakarta" class="logo">
-        <h1>Jakarta Language <span class="accent">Playground</span></h1>
-      </div>
-      <div class="header-right">
-        <select id="examples" class="select-btn">
-          <option value="">-- Pilih Contoh --</option>
-          <option value="hello">Hello World</option>
-          <option value="variables">Variabel & Tipe Data</option>
-          <option value="loops">Perulangan</option>
-          <option value="functions">Fungsi</option>
-          <option value="arrays">Daftar/Array</option>
-          <option value="advanced">Fitur Lanjutan</option>
-        </select>
-        <button id="runBtn" class="btn btn-primary">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
-          Jalankan
-        </button>
-        <button id="clearBtn" class="btn btn-secondary">Bersihkan</button>
-      </div>
-    </header>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">
+                <img src="./jakarta-icon.svg" alt="Jakarta" class="nav-logo-icon">
+                <span class="nav-logo-text">Jakarta<span class="accent">Lang</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#home" class="nav-link active" data-section="home">Home</a>
+                <a href="#playground" class="nav-link" data-section="playground">Playground</a>
+                <a href="#docs" class="nav-link" data-section="docs">Documentation</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
 
-    <main class="editor-container">
-      <div class="panel">
-        <div class="panel-header">
-          <span class="panel-title">📝 Kode Jakarta</span>
-          <span class="panel-info" id="lineInfo">Baris: 1</span>
+    <!-- Hero / Home Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <div class="hero-gradient"></div>
+            <div class="hero-grid"></div>
+            <div class="hero-particles" id="heroParticles"></div>
         </div>
-        <div class="editor-wrapper">
-          <div class="line-numbers" id="lineNumbers">1</div>
-          <textarea id="codeEditor" spellcheck="false" placeholder="Tulis kode Jakarta di sini...">cetak("Halo, Dunia! 🇮🇩")</textarea>
+        <div class="hero-content">
+            <div class="hero-badge">🇮🇩 Bahasa Indonesia Programming Language</div>
+            <h1 class="hero-title">
+                Code in<br>
+                <span class="gradient-text">Bahasa Indonesia</span>
+            </h1>
+            <p class="hero-subtitle">
+                Jakarta is a modern programming language with Indonesian keywords. 
+                Write expressive, readable code in your native language — right in the browser.
+            </p>
+            <div class="hero-actions">
+                <a href="#playground" class="btn btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    Try Playground
+                </a>
+                <a href="#docs" class="btn btn-secondary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                    Read Docs
+                </a>
+            </div>
+            <div class="hero-code-preview">
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <span class="code-filename">contoh.jkt</span>
+                    </div>
+                    <pre class="code-preview-body"><code><span class="kw">tulis</span>(<span class="str">"Halo, Dunia!"</span>);
+<span class="kw">biar</span> nama = <span class="str">"Jakarta"</span>;
+<span class="kw">biar</span> versi = <span class="num">1.0</span>;
+<span class="kw">jika</span> (versi >= <span class="num">1.0</span>) {
+    tulis(<span class="str">`Selamat datang di </span><span class="var">${nama}</span><span class="str">!`</span>);
+}</code></pre>
+                </div>
+            </div>
         </div>
-      </div>
+        <div class="hero-scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
 
-      <div class="panel">
-        <div class="panel-header">
-          <span class="panel-title">📤 Output</span>
-          <span class="panel-info" id="execTime"></span>
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Why Jakarta Language?</h2>
+            <p class="section-subtitle">A programming language designed for Indonesian developers, by Indonesian developers.</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🇮🇩</div>
+                    <h3>Indonesian Keywords</h3>
+                    <p>Write code using <code>jika</code>, <code>lain</code>, <code>biar</code>, <code>tulis</code> and more — natural and intuitive for Indonesian speakers.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Runs in Browser</h3>
+                    <p>No installation needed. The interpreter runs entirely in your browser — just open and start coding.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Safe Execution</h3>
+                    <p>Sandboxed environment with execution timeout protection. Experiment freely without risk.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📦</div>
+                    <h3>Rich Built-ins</h3>
+                    <p>Array methods, string operations, math functions, and type conversions — all built in.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Modern Syntax</h3>
+                    <p>Template literals, arrow functions, destructuring, and spread operators — modern JS features with Indonesian keywords.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Interactive Playground</h3>
+                    <p>Write, run, and debug Jakarta code instantly with syntax highlighting and clear error messages.</p>
+                </div>
+            </div>
         </div>
-        <div class="output-wrapper">
-          <pre id="output" class="output"></pre>
-        </div>
-      </div>
-    </main>
+    </section>
 
+    <!-- Playground Section -->
+    <section class="playground-section" id="playground">
+        <div class="container">
+            <h2 class="section-title">Playground</h2>
+            <p class="section-subtitle">Write and run Jakarta code right here.</p>
+            <div class="playground-wrapper">
+                <div class="playground-toolbar">
+                    <div class="toolbar-left">
+                        <span class="toolbar-label">Editor</span>
+                        <select id="exampleSelect" class="example-select">
+                            <option value="">— Load Example —</option>
+                            <option value="hello">Hello World</option>
+                            <option value="variables">Variables & Types</option>
+                            <option value="functions">Functions</option>
+                            <option value="loops">Loops & Conditions</option>
+                            <option value="arrays">Arrays</option>
+                            <option value="advanced">Advanced Features</option>
+                        </select>
+                    </div>
+                    <div class="toolbar-right">
+                        <button class="btn btn-run" id="runBtn" title="Run (Ctrl+Enter)">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                            Run
+                        </button>
+                        <button class="btn btn-clear" id="clearBtn" title="Clear output">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></svg>
+                            Clear
+                        </button>
+                    </div>
+                </div>
+                <div class="playground-main">
+                    <div class="editor-panel" id="editorPanel">
+                        <div class="editor-header">
+                            <span class="editor-filename">main.jkt</span>
+                            <span class="editor-shortcut">Ctrl+Enter to run</span>
+                        </div>
+                        <div class="editor-container">
+                            <div class="line-numbers" id="lineNumbers"></div>
+                            <textarea id="codeEditor" class="code-editor" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off"></textarea>
+                            <pre class="syntax-highlight" id="syntaxHighlight"></pre>
+                        </div>
+                    </div>
+                    <div class="resizer" id="resizer"></div>
+                    <div class="output-panel" id="outputPanel">
+                        <div class="output-header">
+                            <span class="output-title">Output</span>
+                            <span class="output-status" id="outputStatus"></span>
+                        </div>
+                        <div class="output-body" id="outputBody">
+                            <div class="output-placeholder">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.3"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                                <p>Press <kbd>Ctrl</kbd>+<kbd>Enter</kbd> or click <strong>Run</strong> to execute</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documentation Section -->
+    <section class="docs-section" id="docs">
+        <div class="container">
+            <h2 class="section-title">Documentation</h2>
+            <p class="section-subtitle">Everything you need to know about Jakarta Language.</p>
+            <div class="docs-layout">
+                <aside class="docs-sidebar">
+                    <nav class="docs-nav">
+                        <a href="#doc-keywords" class="docs-nav-link active">Keywords</a>
+                        <a href="#doc-builtins" class="docs-nav-link">Built-in Functions</a>
+                        <a href="#doc-operators" class="docs-nav-link">Operators</a>
+                        <a href="#doc-types" class="docs-nav-link">Data Types</a>
+                        <a href="#doc-examples" class="docs-nav-link">Examples</a>
+                    </nav>
+                </aside>
+                <div class="docs-content">
+                    <!-- Keywords -->
+                    <div class="doc-card" id="doc-keywords">
+                        <h3>Keywords</h3>
+                        <p>Jakarta Language uses Indonesian keywords that map directly to JavaScript equivalents.</p>
+                        <div class="doc-table-wrapper">
+                            <table class="doc-table">
+                                <thead>
+                                    <tr><th>Jakarta</th><th>JavaScript</th><th>Description</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>biar</code></td><td><code>let</code></td><td>Variable declaration</td></tr>
+                                    <tr><td><code>konstan</code></td><td><code>const</code></td><td>Constant declaration</td></tr>
+                                    <tr><td><code>jika</code></td><td><code>if</code></td><td>Conditional statement</td></tr>
+                                    <tr><td><code>lain</code></td><td><code>else</code></td><td>Else clause</td></tr>
+                                    <tr><td><code>lainjika</code></td><td><code>else if</code></td><td>Else-if clause</td></tr>
+                                    <tr><td><code>untuk</code></td><td><code>for</code></td><td>For loop</td></tr>
+                                    <tr><td><code>selama</code></td><td><code>while</code></td><td>While loop</td></tr>
+                                    <tr><td><code>fungsi</code></td><td><code>function</code></td><td>Function declaration</td></tr>
+                                    <tr><td><code>kembali</code></td><td><code>return</code></td><td>Return value</td></tr>
+                                    <tr><td><code>tulis</code></td><td><code>console.log</code></td><td>Print output</td></tr>
+                                    <tr><td><code>benar</code></td><td><code>true</code></td><td>Boolean true</td></tr>
+                                    <tr><td><code>salah</code></td><td><code>false</code></td><td>Boolean false</td></tr>
+                                    <tr><td><code>kosong</code></td><td><code>null</code></td><td>Null value</td></tr>
+                                    <tr><td><code>tidakdef</code></td><td><code>undefined</code></td><td>Undefined value</td></tr>
+                                    <tr><td><code>baru</code></td><td><code>new</code></td><td>Create instance</td></tr>
+                                    <tr><td><code>kelas</code></td><td><code>class</code></td><td>Class declaration</td></tr>
+                                    <tr><td><code>ini</code></td><td><code>this</code></td><td>Current instance</td></tr>
+                                    <tr><td><code>luar</code></td><td><code>break</code></td><td>Break loop</td></tr>
+                                    <tr><td><code>lanjut</code></td><td><code>continue</code></td><td>Continue loop</td></tr>
+                                    <tr><td><code>jenis</code></td><td><code>typeof</code></td><td>Type check</td></tr>
+                                    <tr><td><code>masuk</code></td><td><code>import</code></td><td>Import module</td></tr>
+                                    <tr><td><code>keluar</code></td><td><code>export</code></td><td>Export module</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Built-in Functions -->
+                    <div class="doc-card" id="doc-builtins">
+                        <h3>Built-in Functions</h3>
+                        <p>Essential functions available globally in Jakarta Language.</p>
+                        <div class="doc-table-wrapper">
+                            <table class="doc-table">
+                                <thead>
+                                    <tr><th>Function</th><th>Description</th><th>Example</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>tulis(val)</code></td><td>Print value to output</td><td><code>tulis("Halo")</code></td></tr>
+                                    <tr><td><code>panjang(arr)</code></td><td>Get length of array/string</td><td><code>panjang([1,2,3])</code> → 3</td></tr>
+                                    <tr><td><code>jenis(val)</code></td><td>Get type of value</td><td><code>jenis(42)</code> → "angka"</td></tr>
+                                    <tr><td><code>keString(val)</code></td><td>Convert to string</td><td><code>keString(42)</code> → "42"</td></tr>
+                                    <tr><td><code>keAngka(val)</code></td><td>Convert to number</td><td><code>keAngka("3.14")</code> → 3.14</td></tr>
+                                    <tr><td><code>keBilangan(val)</code></td><td>Convert to integer</td><td><code>keBilangan(3.7)</code> → 3</td></tr>
+                                    <tr><td><code>acak()</code></td><td>Random number 0–1</td><td><code>acak()</code> → 0.537...</td></tr>
+                                    <tr><td><code>acakBilangan(min, max)</code></td><td>Random integer in range</td><td><code>acakBilangan(1, 10)</code> → 7</td></tr>
+                                    <tr><td><code>bulatkan(val, n)</code></td><td>Round to n decimals</td><td><code>bulatkan(3.1415, 2)</code> → 3.14</td></tr>
+                                    <tr><td><code>abs(val)</code></td><td>Absolute value</td><td><code>abs(-5)</code> → 5</td></tr>
+                                    <tr><td><code>kuadrat(val)</code></td><td>Square root</td><td><code>kuadrat(16)</code> → 4</td></tr>
+                                    <tr><td><code>pangkat(base, exp)</code></td><td>Exponentiation</td><td><code>pangkat(2, 3)</code> → 8</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Operators -->
+                    <div class="doc-card" id="doc-operators">
+                        <h3>Operators</h3>
+                        <p>Standard operators available in Jakarta Language.</p>
+                        <div class="operators-grid">
+                            <div class="operator-group">
+                                <h4>Arithmetic</h4>
+                                <div class="operator-list">
+                                    <span class="op-badge">+</span> <span class="op-badge">-</span> <span class="op-badge">*</span> <span class="op-badge">/</span> <span class="op-badge">%</span> <span class="op-badge">**</span>
+                                </div>
+                            </div>
+                            <div class="operator-group">
+                                <h4>Comparison</h4>
+                                <div class="operator-list">
+                                    <span class="op-badge">==</span> <span class="op-badge">!=</span> <span class="op-badge">===</span> <span class="op-badge">!==</span> <span class="op-badge">&lt;</span> <span class="op-badge">&gt;</span> <span class="op-badge">&lt;=</span> <span class="op-badge">&gt;=</span>
+                                </div>
+                            </div>
+                            <div class="operator-group">
+                                <h4>Logical</h4>
+                                <div class="operator-list">
+                                    <span class="op-badge">&amp;&amp;</span> <span class="op-badge">||</span> <span class="op-badge">!</span>
+                                </div>
+                            </div>
+                            <div class="operator-group">
+                                <h4>Assignment</h4>
+                                <div class="operator-list">
+                                    <span class="op-badge">=</span> <span class="op-badge">+=</span> <span class="op-badge">-=</span> <span class="op-badge">*=</span> <span class="op-badge">/=</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Data Types -->
+                    <div class="doc-card" id="doc-types">
+                        <h3>Data Types</h3>
+                        <p>Jakarta supports the following data types.</p>
+                        <div class="types-grid">
+                            <div class="type-card">
+                                <div class="type-name">Angka <span class="type-js">Number</span></div>
+                                <div class="type-example"><code>biar x = 42;</code></div>
+                            </div>
+                            <div class="type-card">
+                                <div class="type-name">Teks <span class="type-js">String</span></div>
+                                <div class="type-example"><code>biar s = "Halo";</code></div>
+                            </div>
+                            <div class="type-card">
+                                <div class="type-name">Boolean <span class="type-js">Boolean</span></div>
+                                <div class="type-example"><code>biar b = benar;</code></div>
+                            </div>
+                            <div class="type-card">
+                                <div class="type-name">Daftar <span class="type-js">Array</span></div>
+                                <div class="type-example"><code>biar d = [1, 2, 3];</code></div>
+                            </div>
+                            <div class="type-card">
+                                <div class="type-name">Objek <span class="type-js">Object</span></div>
+                                <div class="type-example"><code>biar o = {nama: "Jkt"};</code></div>
+                            </div>
+                            <div class="type-card">
+                                <div class="type-name">Fungsi <span class="type-js">Function</span></div>
+                                <div class="type-example"><code>fungsi f() {}</code></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Examples -->
+                    <div class="doc-card" id="doc-examples">
+                        <h3>Code Examples</h3>
+                        <p>Practical examples to get you started with Jakarta Language.</p>
+                        <div class="examples-list">
+                            <div class="example-item">
+                                <div class="example-header" onclick="toggleExample(this)">
+                                    <h4>Hello World</h4>
+                                    <span class="example-toggle">▸</span>
+                                </div>
+                                <div class="example-body">
+                                    <pre><code>tulis("Halo, Dunia!");
+tulis("Selamat datang di Jakarta Language!");</code></pre>
+                                </div>
+                            </div>
+                            <div class="example-item">
+                                <div class="example-header" onclick="toggleExample(this)">
+                                    <h4>Variables & Types</h4>
+                                    <span class="example-toggle">▸</span>
+                                </div>
+                                <div class="example-body">
+                                    <pre><code>biar nama = "Jakarta";
+biar versi = 1.0;
+biar aktif = benar;
+konstan PI = 3.14159;
+
+tulis(`Nama: ${nama}`);
+tulis(`Versi: ${versi}`);
+tulis(`Aktif: ${aktif}`);
+tulis(`PI: ${PI}`);</code></pre>
+                                </div>
+                            </div>
+                            <div class="example-item">
+                                <div class="example-header" onclick="toggleExample(this)">
+                                    <h4>Functions</h4>
+                                    <span class="example-toggle">▸</span>
+                                </div>
+                                <div class="example-body">
+                                    <pre><code>fungsi tambah(a, b) {
+    kembali a + b;
+}
+
+fungsi faktorial(n) {
+    jika (n <= 1) kembali 1;
+    kembali n * faktorial(n - 1);
+}
+
+tulis(`5 + 3 = ${tambah(5, 3)}`);
+tulis(`5! = ${faktorial(5)}`);</code></pre>
+                                </div>
+                            </div>
+                            <div class="example-item">
+                                <div class="example-header" onclick="toggleExample(this)">
+                                    <h4>Loops & Conditions</h4>
+                                    <span class="example-toggle">▸</span>
+                                </div>
+                                <div class="example-body">
+                                    <pre><code>untuk (biar i = 1; i <= 5; i += 1) {
+    jika (i % 2 == 0) {
+        tulis(`${i} adalah genap`);
+    } lain {
+        tulis(`${i} adalah ganjil`);
+    }
+}
+
+biar hitung = 0;
+selama (hitung < 3) {
+    tulis(`Hitung: ${hitung}`);
+    hitung += 1;
+}</code></pre>
+                                </div>
+                            </div>
+                            <div class="example-item">
+                                <div class="example-header" onclick="toggleExample(this)">
+                                    <h4>Arrays</h4>
+                                    <span class="example-toggle">▸</span>
+                                </div>
+                                <div class="example-body">
+                                    <pre><code>biar buah = ["Mangga", "Durian", "Rambutan"];
+
+tulis(`Buah pertama: ${buah[0]}`);
+tulis(`Jumlah buah: ${panjang(buah)}`);
+
+buah.dorong("Salak");
+tulis(`Setelah dorong: ${buah}`);
+
+biar angka = [5, 3, 8, 1, 9];
+biar diurutkan = angka.urutkan((a, b) => a - b);
+tulis(`Diurutkan: ${diurutkan}`);</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="footer">
-      <div class="footer-left">
-        <span>Jakarta Language v0.1.0</span>
-        <span class="separator">•</span>
-        <a href="https://github.com/jakarta-lang" target="_blank">GitHub</a>
-        <span class="separator">•</span>
-        <a href="../README.md">Dokumentasi</a>
-      </div>
-      <div class="footer-right">
-        <span id="statusIndicator" class="status status-ready">Siap</span>
-      </div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="./jakarta-icon.svg" alt="Jakarta" class="footer-logo">
+                    <span>Jakarta<span class="accent">Lang</span></span>
+                </div>
+                <p class="footer-tagline">Programming in Bahasa Indonesia 🇮🇩</p>
+                <p class="footer-copy">&copy; 2026 Jakarta Language. Open source &amp; free to use.</p>
+            </div>
+        </div>
     </footer>
-  </div>
 
-  <script src="interpreter.js"></script>
-  <script src="app.js"></script>
+    <script src="./interpreter.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>
