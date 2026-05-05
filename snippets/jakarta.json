@@ -1,0 +1,103 @@
+{
+  "Fungsi": {
+    "prefix": "fungsi",
+    "body": [
+      "fungsi ${1:namaFungsi}(${2:parameter}) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Membuat fungsi baru"
+  },
+  "Kelas": {
+    "prefix": "kelas",
+    "body": [
+      "kelas ${1:NamaKelas} {",
+      "\tkonstruktor(${2:parameter}) {",
+      "\t\t$0",
+      "\t}",
+      "}"
+    ],
+    "description": "Membuat kelas baru"
+  },
+  "Jika": {
+    "prefix": "jika",
+    "body": [
+      "jika (${1:kondisi}) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Statement jika (if)"
+  },
+  "Jika Lain": {
+    "prefix": "jika_lain",
+    "body": [
+      "jika (${1:kondisi}) {",
+      "\t$2",
+      "} lain {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Statement jika-lain (if-else)"
+  },
+  "Selama": {
+    "prefix": "selama",
+    "body": [
+      "selama (${1:kondisi}) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Loop selama (while)"
+  },
+  "Untuk": {
+    "prefix": "untuk",
+    "body": [
+      "untuk (${1:var} dalam ${2:rentang}) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Loop untuk (for)"
+  },
+  "Cetak": {
+    "prefix": "cetak",
+    "body": [
+      "cetak(${1:\"$0\"});"
+    ],
+    "description": "Cetak ke layar (print)"
+  },
+  "Coba Tangkap": {
+    "prefix": "coba",
+    "body": [
+      "coba {",
+      "\t$1",
+      "} tangkap (${2:kesalahan}) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Error handling coba-tangkap (try-catch)"
+  },
+  "Impor": {
+    "prefix": "impor",
+    "body": [
+      "impor ${1:modul} dari \"${2:path}\";"
+    ],
+    "description": "Impor modul (import)"
+  },
+  "Ekspor": {
+    "prefix": "ekspor",
+    "body": [
+      "ekspor ${1:nama};"
+    ],
+    "description": "Ekspor modul (export)"
+  },
+  "Main": {
+    "prefix": "main",
+    "body": [
+      "fungsi utama() {",
+      "\t$0",
+      "}",
+      "",
+      "utama();"
+    ],
+    "description": "Template program utama"
+  }
+}

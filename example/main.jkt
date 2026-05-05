@@ -1,0 +1,121 @@
+// ============================================
+// 🇮🇩 Bahasa Pemrograman Jakarta - Contoh
+// ============================================
+
+// Cetak teks ke layar
+cetak("Halo, Jakarta! 🏙️");
+
+// Variabel
+var nama = "Budi";
+var umur = 25;
+cetak("Nama: " + nama);
+cetak("Umur: " + teks(umur));
+
+// Konstan
+konstan PI = 3.14159;
+konstan VERSI = "0.1.0";
+cetak("Versi Jakarta: " + VERSI);
+
+// Operasi matematika
+var a = 10;
+var b = 3;
+cetak("Penjumlahan: " + teks(a + b));
+cetak("Pengurangan: " + teks(a - b));
+cetak("Perkalian: " + teks(a * b));
+cetak("Pembagian: " + teks(a / b));
+cetak("Modulus: " + teks(a % b));
+cetak("Pangkat: " + teks(a ** b));
+
+// Boolean
+var aktif = benar;
+var selesai = salah;
+cetak("Aktif: " + teks(aktif));
+cetak("Selesai: " + teks(selesai));
+
+// Kondisi jika-lain
+jika (umur >= 17) {
+    cetak(nama + " sudah dewasa");
+} lain {
+    cetak(nama + " belum dewasa");
+}
+
+// Operator logika
+jika (aktif dan umur > 20) {
+    cetak(nama + " aktif dan berusia di atas 20");
+}
+
+// Loop selama (while)
+var hitung = 0;
+selama (hitung < 5) {
+    cetak("Hitung: " + teks(hitung));
+    hitung += 1;
+}
+
+// Loop untuk (for)
+untuk (i dalam rentang(1, 6)) {
+    cetak("Iterasi ke-" + teks(i));
+}
+
+// Daftar (list)
+var buah = ["Mangga", "Durian", "Rambutan", "Salak"];
+cetak("Buah: " + teks(buah));
+cetak("Buah pertama: " + buah[0]);
+cetak("Jumlah buah: " + teks(panjang(buah)));
+
+// Fungsi
+fungsi sapa(nama) {
+    cetak("Halo, " + nama + "! Selamat datang di Jakarta!");
+}
+sapa("Andi");
+
+fungsi tambah(a, b) {
+    kembali a + b;
+}
+var hasil = tambah(7, 3);
+cetak("7 + 3 = " + teks(hasil));
+
+// Fungsi rekursif - Fibonacci
+fungsi fibonacci(n) {
+    jika (n <= 1) {
+        kembali n;
+    }
+    kembali fibonacci(n - 1) + fibonacci(n - 2);
+}
+cetak("Fibonacci(10) = " + teks(fibonacci(10)));
+
+// Faktorial
+fungsi faktorial(n) {
+    jika (n <= 1) {
+        kembali 1;
+    }
+    kembali n * faktorial(n - 1);
+}
+cetak("Faktorial(5) = " + teks(faktorial(5)));
+
+// Ternary operator
+var status = umur >= 17 ? "dewasa" : "anak-anak";
+cetak("Status: " + status);
+
+// Rentang
+var angka = 1..5;
+cetak("Rentang 1..5: " + teks(angka));
+
+// Operasi string
+var kalimat = "Jakarta adalah ibu kota Indonesia";
+cetak("Huruf besar: " + besar(kalimat));
+cetak("Huruf kecil: " + kecil(kalimat));
+cetak("Panjang: " + teks(panjang(kalimat)));
+
+// Nested loop - Segitiga bintang
+fungsi segitiga(tinggi) {
+    untuk (baris dalam rentang(1, tinggi + 1)) {
+        var bintang = "";
+        untuk (kolom dalam rentang(1, baris + 1)) {
+            bintang = bintang + "⭐";
+        }
+        cetak(bintang);
+    }
+}
+segitiga(5);
+
+cetak("✅ Semua contoh berhasil dijalankan!");

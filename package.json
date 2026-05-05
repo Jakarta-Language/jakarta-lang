@@ -1,0 +1,36 @@
+{
+  "name": "jakarta-lang",
+  "displayName": "Jakarta Language",
+  "description": "Bahasa pemrograman Jakarta - Bahasa pemrograman berbasis Bahasa Indonesia",
+  "version": "0.1.0",
+  "publisher": "jakarta-lang",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": ["Programming Languages"],
+  "contributes": {
+    "languages": [
+      {
+        "id": "jakarta",
+        "aliases": ["Jakarta", "jakarta"],
+        "extensions": [".jkt"],
+        "icon": "./images/jakarta-icon.svg",
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "jakarta",
+        "scopeName": "source.jkt",
+        "path": "./syntaxes/jakarta.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "jakarta",
+        "path": "./snippets/jakarta.json"
+      }
+    ]
+  },
+  "icon": "images/jakarta-icon.svg"
+}

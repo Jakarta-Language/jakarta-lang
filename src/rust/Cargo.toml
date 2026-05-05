@@ -1,0 +1,9 @@
+[package]
+name = "jakarta-lang"
+version = "0.1.0"
+edition = "2021"
+description = "Jakarta Programming Language Interpreter - Rust Implementation"
+
+[[bin]]
+name = "jakarta"
+path = "src/main.rs"

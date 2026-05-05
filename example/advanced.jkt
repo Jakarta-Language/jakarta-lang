@@ -1,0 +1,179 @@
+// ============================================
+// 🇮🇩 Jakarta Language - Contoh Lanjutan
+// ============================================
+
+// Bubble Sort - versi rekursif
+fungsi bubble_pass(daftar, n) {
+    jika (n <= 1) {
+        kembali daftar;
+    }
+    var hasil = [];
+    var i = 0;
+    selama (i < panjang(daftar) - 1) {
+        jika (daftar[i] > daftar[i + 1]) {
+            // Tukar elemen
+            var sementara = daftar[i];
+            hasil = hasil + [daftar[i + 1]];
+            // Simpan sementara untuk ditambahkan di iterasi berikutnya
+        } lain {
+            hasil = hasil + [daftar[i]];
+        }
+        i += 1;
+    }
+    hasil = hasil + [daftar[panjang(daftar) - 1]];
+    kembali bubble_pass(hasil, n - 1);
+}
+
+// Selection Sort - lebih mudah diimplementasikan
+fungsi pilih_min(daftar, mulai) {
+    var min_idx = mulai;
+    var i = mulai + 1;
+    selama (i < panjang(daftar)) {
+        jika (daftar[i] < daftar[min_idx]) {
+            min_idx = i;
+        }
+        i += 1;
+    }
+    kembali min_idx;
+}
+
+fungsi selection_sort(daftar) {
+    var hasil = [];
+    var sisa = daftar;
+    selama (panjang(sisa) > 0) {
+        var min_idx = pilih_min(sisa, 0);
+        hasil = hasil + [sisa[min_idx]];
+        // Buat sisa tanpa elemen minimum
+        var daftar_baru = [];
+        var j = 0;
+        selama (j < panjang(sisa)) {
+            jika (j != min_idx) {
+                daftar_baru = daftar_baru + [sisa[j]];
+            }
+            j += 1;
+        }
+        sisa = daftar_baru;
+    }
+    kembali hasil;
+}
+
+var angka_acak = [64, 34, 25, 12, 22, 11, 90];
+cetak("Sebelum sort: " + teks(angka_acak));
+var terurut = selection_sort(angka_acak);
+cetak("Sesudah sort: " + teks(terurut));
+
+// Cari bilangan prima
+fungsi apa_prima(n) {
+    jika (n < 2) {
+        kembali salah;
+    }
+    jika (n == 2) {
+        kembali benar;
+    }
+    jika (n % 2 == 0) {
+        kembali salah;
+    }
+    var i = 3;
+    selama (i * i <= n) {
+        jika (n % i == 0) {
+            kembali salah;
+        }
+        i += 2;
+    }
+    kembali benar;
+}
+
+fungsi cari_prima(maks) {
+    var prima = [];
+    untuk (n dalam rentang(2, maks + 1)) {
+        jika (apa_prima(n)) {
+            prima = prima + [n];
+        }
+    }
+    kembali prima;
+}
+
+var bilangan_prima = cari_prima(50);
+cetak("Bilangan prima 1-50: " + teks(bilangan_prima));
+
+// FizzBuzz
+fungsi fizz_buzz(n) {
+    untuk (i dalam rentang(1, n + 1)) {
+        jika (i % 15 == 0) {
+            cetak("FizzBuzz");
+        } lain jika (i % 3 == 0) {
+            cetak("Fizz");
+        } lain jika (i % 5 == 0) {
+            cetak("Buzz");
+        } lain {
+            cetak(teks(i));
+        }
+    }
+}
+cetak("=== FizzBuzz 1-20 ===");
+fizz_buzz(20);
+
+// Pola diamond
+fungsi diamond(ukuran) {
+    // Bagian atas
+    untuk (i dalam rentang(1, ukuran + 1)) {
+        var spasi = "";
+        var bintang = "";
+        untuk (s dalam rentang(0, ukuran - i)) {
+            spasi = spasi + " ";
+        }
+        untuk (b dalam rentang(0, 2 * i - 1)) {
+            bintang = bintang + "💎";
+        }
+        cetak(spasi + bintang);
+    }
+    // Bagian bawah
+    var i = ukuran - 1;
+    selama (i >= 1) {
+        var spasi = "";
+        var bintang = "";
+        untuk (s dalam rentang(0, ukuran - i)) {
+            spasi = spasi + " ";
+        }
+        untuk (b dalam rentang(0, 2 * i - 1)) {
+            bintang = bintang + "💎";
+        }
+        cetak(spasi + bintang);
+        i -= 1;
+    }
+}
+cetak("=== Diamond ===");
+diamond(5);
+
+// Kalkulator sederhana
+fungsi kalkulator(operasi, a, b) {
+    jika (operasi == "tambah") {
+        kembali a + b;
+    } lain jika (operasi == "kurang") {
+        kembali a - b;
+    } lain jika (operasi == "kali") {
+        kembali a * b;
+    } lain jika (operasi == "bagi") {
+        kembali a / b;
+    } lain {
+        kembali 0;
+    }
+}
+cetak("10 + 5 = " + teks(kalkulator("tambah", 10, 5)));
+cetak("10 - 5 = " + teks(kalkulator("kurang", 10, 5)));
+cetak("10 * 5 = " + teks(kalkulator("kali", 10, 5)));
+cetak("10 / 5 = " + teks(kalkulator("bagi", 10, 5)));
+
+// Hitung rata-rata
+fungsi rata_rata(daftar) {
+    var total = 0;
+    untuk (x dalam daftar) {
+        total += x;
+    }
+    kembali total / panjang(daftar);
+}
+var nilai = [85, 90, 78, 92, 88];
+cetak("Nilai: " + teks(nilai));
+cetak("Rata-rata: " + teks(rata_rata(nilai)));
+
+cetak("✅ Contoh lanjutan berhasil!");

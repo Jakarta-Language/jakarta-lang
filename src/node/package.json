@@ -1,0 +1,16 @@
+{
+  "name": "jakarta-lang",
+  "version": "0.1.0",
+  "description": "Jakarta Programming Language Interpreter - Node.js Implementation",
+  "main": "dist/interpreter.js",
+  "bin": {
+    "jakarta": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/cli.js",
+    "dev": "ts-node src/cli.ts"
+  },
+  "keywords": ["jakarta", "language", "interpreter", "indonesia"],
+  "license": "MIT"
+}
