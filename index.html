@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jakarta Language Playground</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="../images/jakarta-icon.svg" type="image/svg+xml">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="header-left">
+        <img src="../images/jakarta-icon.svg" alt="Jakarta" class="logo">
+        <h1>Jakarta Language <span class="accent">Playground</span></h1>
+      </div>
+      <div class="header-right">
+        <select id="examples" class="select-btn">
+          <option value="">-- Pilih Contoh --</option>
+          <option value="hello">Hello World</option>
+          <option value="variables">Variabel & Tipe Data</option>
+          <option value="loops">Perulangan</option>
+          <option value="functions">Fungsi</option>
+          <option value="arrays">Daftar/Array</option>
+          <option value="advanced">Fitur Lanjutan</option>
+        </select>
+        <button id="runBtn" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+          Jalankan
+        </button>
+        <button id="clearBtn" class="btn btn-secondary">Bersihkan</button>
+      </div>
+    </header>
+
+    <main class="editor-container">
+      <div class="panel">
+        <div class="panel-header">
+          <span class="panel-title">📝 Kode Jakarta</span>
+          <span class="panel-info" id="lineInfo">Baris: 1</span>
+        </div>
+        <div class="editor-wrapper">
+          <div class="line-numbers" id="lineNumbers">1</div>
+          <textarea id="codeEditor" spellcheck="false" placeholder="Tulis kode Jakarta di sini...">cetak("Halo, Dunia! 🇮🇩")</textarea>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <span class="panel-title">📤 Output</span>
+          <span class="panel-info" id="execTime"></span>
+        </div>
+        <div class="output-wrapper">
+          <pre id="output" class="output"></pre>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-left">
+        <span>Jakarta Language v0.1.0</span>
+        <span class="separator">•</span>
+        <a href="https://github.com/jakarta-lang" target="_blank">GitHub</a>
+        <span class="separator">•</span>
+        <a href="../README.md">Dokumentasi</a>
+      </div>
+      <div class="footer-right">
+        <span id="statusIndicator" class="status status-ready">Siap</span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="interpreter.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
