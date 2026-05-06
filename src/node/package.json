@@ -9,7 +9,8 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/cli.js",
-    "dev": "ts-node src/cli.ts"
+    "dev": "ts-node src/cli.ts",
+    "test": "npm run build && node test/smoke.js"
   },
   "keywords": ["jakarta", "language", "interpreter", "indonesia"],
   "license": "MIT"
