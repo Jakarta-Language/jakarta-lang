@@ -343,17 +343,21 @@ class Parser {
         const val = this.parseExpression(); this.match(TokenType.SEMICOLON);
         return { kind: 'assign', name: expr.name, value: val };
       }
-      const compound: Record<string, string> = {};
-      if (this.current().type === TokenType.PLUS_ASSIGN) { compound['+'] = '+'; }
-      if (this.current().type === TokenType.MINUS_ASSIGN) { compound['-'] = '-'; }
-      if (this.current().type === TokenType.STAR_ASSIGN) { compound['*'] = '*'; }
-      if (this.current().type === TokenType.SLASH_ASSIGN) { compound['/'] = '/'; }
-      for (const [tt, op] of Object.entries(compound)) {
-        if (this.current().value === tt || this.current().type === tt as TokenType) {
-          this.advance();
-          const val = this.parseExpression(); this.match(TokenType.SEMICOLON);
-          return { kind: 'assign', name: expr.name, value: { kind: 'binaryOp', left: { kind: 'identifier', name: expr.name }, op, right: val } };
-        }
+      const compoundOpMap: Partial<Record<TokenType, string>> = {
+        [TokenType.PLUS_ASSIGN]: '+',
+        [TokenType.MINUS_ASSIGN]: '-',
+        [TokenType.STAR_ASSIGN]: '*',
+        [TokenType.SLASH_ASSIGN]: '/',
+      };
+      const compoundOp = compoundOpMap[this.current().type];
+      if (compoundOp) {
+        this.advance();
+        const val = this.parseExpression(); this.match(TokenType.SEMICOLON);
+        return {
+          kind: 'assign',
+          name: expr.name,
+          value: { kind: 'binaryOp', left: { kind: 'identifier', name: expr.name }, op: compoundOp, right: val },
+        };
       }
     }
     this.match(TokenType.SEMICOLON);
@@ -547,7 +551,7 @@ class Environment {
     if (this.consts.has(name)) throw new JakartaRuntimeError(`Tidak bisa mengubah konstan "${name}"`);
     if (this.vars.has(name)) { this.vars.set(name, value); return; }
     if (this.parent && this.parent.has(name)) { this.parent.set(name, value); return; }
-    this.vars.set(name, value);
+    throw new JakartaRuntimeError(`Variabel "${name}" belum dideklarasikan`);
   }
 
   define(name: string, value: any, isConst = false): void {
